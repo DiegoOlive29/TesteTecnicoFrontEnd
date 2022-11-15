@@ -5,7 +5,7 @@ export const GlobalStyle = createGlobalStyle`
     :root{
     --white:#fff;
     --grey: rgba(212,222,229);
-    --colordireita: rgba(247,249,250);
+    --colordireita: rgba(245,245,245);
     --blue:rgba(61,117,187);
     --blueMin:rgba(126,176,239);
     --whiteback: rgba(245,247,250);
