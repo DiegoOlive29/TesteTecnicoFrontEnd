@@ -1,7 +1,9 @@
 import styled  from "styled-components";
 
-export const Ex = styled.div`  
-
+export const MainCenter = styled.main`  
+    background-color: var(--white);
+    width: 50%;
+    height: 500px 
 
 `
 

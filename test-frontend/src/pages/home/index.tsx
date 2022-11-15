@@ -1,8 +1,12 @@
-const Ex=() =>{
+import MainCenter from "../../components/MainCenter"
+const Home=() =>{
 
     return (
-        <h1>"oi"</h1>
+        <MainCenter/>
+            
+
+       
     )
 }
 
-export default Ex
+export default Home
