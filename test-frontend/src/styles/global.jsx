@@ -9,6 +9,8 @@ export const GlobalStyle = createGlobalStyle`
     --blue:rgba(61,117,187);
     --blueMin:rgba(126,176,239);
     --whiteback: rgba(245,247,250);
+    --greytext: #626262;
+    --greytextmin: #919191;
 
 
     }
