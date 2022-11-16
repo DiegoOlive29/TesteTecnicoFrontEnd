@@ -1,20 +1,28 @@
-import { MainCenterStyle,LeftContainer, RightContainer } from "./styles"
+import { MainCenterStyle,LeftContainer, RightContainer, SmallerText } from "./styles"
 const MainCenter=() =>{
 
     return (
         <MainCenterStyle>
             <LeftContainer>
-                <h2>Simule sua Antecipação</h2>
-                <form action="">
-                    <label htmlFor="">Informe o Valor da venda <span>*</span></label>
-                    <input type="text" />
+                   
+                    <form action="">
 
-                    <label htmlFor="">Em quantas parcelas <span>*</span></label>
-                    <input type="text" />
+                        <h2>Simule sua Antecipação</h2>
+                        
+                        <label htmlFor=""> <p>Informe o valor da venda <span>*</span> </p>
+                        <input type="text" />
+                        </label>
 
-                    <label htmlFor="">Informe o percentual de MDR <span>*</span></label>
-                    <input type="text" />
-                </form>
+                        <label htmlFor=""> <p>Em quantas parcelas <span>*</span> </p>
+                        <input type="text" />
+                        <SmallerText>Maximo de 12 parcelas</SmallerText>
+                        </label>
+
+                        <label htmlFor=""> <p>Informe o percentual de MDR <span>*</span> </p>
+                        <input type="text" />
+                        </label>
+                  
+                    </form>
             </LeftContainer>
             
             <RightContainer>
