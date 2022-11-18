@@ -2,12 +2,13 @@ import {LeftContainer , SmallerText, Error } from "./styles";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from '@hookform/resolvers/yup';
+import { postAnt } from "../../service/postAnticipation";
 
 const LeftCon=() =>{
     interface CreateConsult{
-        amount      :string;
-        installments:string;
-        mdr         :string;
+        amount:number;
+        installments: number;
+        mdr: number
     }
     const formSchema  = yup.object().shape({
         amount       :yup.string().required("Campo obrigatório."),
@@ -17,13 +18,15 @@ const LeftCon=() =>{
 
     const { register, handleSubmit,formState:{ errors }} = useForm<CreateConsult>({resolver:yupResolver(formSchema)});
 
-    const handleSubmitFunction = (data:CreateConsult)=> console.log(data)
+    const handleSubmitPost = (data:CreateConsult)=> {
+        postAnt(data)
+    }
 
     return (
        
             <LeftContainer>
                    
-                    <form onSubmit={handleSubmit(handleSubmitFunction)}>
+                    <form onSubmit={handleSubmit(handleSubmitPost)}>
 
                         <h2>Simule sua Antecipação</h2>
                         
