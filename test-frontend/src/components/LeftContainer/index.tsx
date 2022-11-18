@@ -3,39 +3,49 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from '@hookform/resolvers/yup';
 import { postAnt } from "../../service/postAnticipation";
-import { ReactNode } from "react";
+
 
 interface LeftProps{
-    setDados:any ;
-        
+    setDados:Function ;
+    setLoad:Function;
+    setInternalProblem:Function;
+
     }
 
-const LeftCon=({setDados}:LeftProps) =>{
+
+
+const LeftCon=({setDados,setLoad,setInternalProblem}:LeftProps) =>{
+
     interface CreateConsult{
         amount:number;
         installments: number;
         mdr: number
     }
     const formSchema  = yup.object().shape({
-        amount       :yup.string().required("Campo obrigatório.").min(2,"Valor minimo é 10"),
-        installments :yup.number().required("Campo obrigatório.").max(12),
-        mdr          :yup.string().required("Campo obrigatório.") 
+        amount       :yup.number().typeError("Campo obrigatório.").min(2,"Valor minimo é 10").required("Campo obrigatório."),
+        installments :yup.number().typeError("Campo obrigatório.").max(12).required("Campo obrigatório."),
+        mdr          :yup.number().typeError("Campo obrigatório.").required("Campo obrigatório.") 
     });
 
     const { register, handleSubmit,formState:{ errors }} = useForm<CreateConsult>({resolver:yupResolver(formSchema)});
 
     const  handleSubmitPost = async (data:CreateConsult)=> {
-       
-        setDados(await postAnt(data))
+        setLoad(true);
+        setInternalProblem(false)
+        setDados(await postAnt(data).catch((err)=> {
+            setInternalProblem(true)
+        }))
+
+        setLoad(false)
         
     }
 
     return (
-       
+            
             <LeftContainer>
-                   
+                
                     <form onSubmit={handleSubmit(handleSubmitPost)}>
-
+                    
                         <h2>Simule sua Antecipação</h2>
                         
                         <label htmlFor=""> <p>Informe o valor da venda <span>*</span> </p>
@@ -54,9 +64,10 @@ const LeftCon=({setDados}:LeftProps) =>{
                         </label>
                      <button type="submit">Enviar!</button>
                     </form>
+                    
             </LeftContainer>
             
-            
+          
             )
         }
         
