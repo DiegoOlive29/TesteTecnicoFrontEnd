@@ -3,23 +3,31 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from '@hookform/resolvers/yup';
 import { postAnt } from "../../service/postAnticipation";
+import { ReactNode } from "react";
 
-const LeftCon=() =>{
+interface LeftProps{
+    setDados:any ;
+        
+    }
+
+const LeftCon=({setDados}:LeftProps) =>{
     interface CreateConsult{
         amount:number;
         installments: number;
         mdr: number
     }
     const formSchema  = yup.object().shape({
-        amount       :yup.string().required("Campo obrigatório."),
-        installments :yup.string().required("Campo obrigatório."),
+        amount       :yup.string().required("Campo obrigatório.").min(2,"Valor minimo é 10"),
+        installments :yup.number().required("Campo obrigatório.").max(12),
         mdr          :yup.string().required("Campo obrigatório.") 
     });
 
     const { register, handleSubmit,formState:{ errors }} = useForm<CreateConsult>({resolver:yupResolver(formSchema)});
 
-    const handleSubmitPost = (data:CreateConsult)=> {
-        postAnt(data)
+    const  handleSubmitPost = async (data:CreateConsult)=> {
+       
+        setDados(await postAnt(data))
+        
     }
 
     return (
@@ -44,7 +52,6 @@ const LeftCon=() =>{
                         <input type="text" placeholder="Numeros" {...register('mdr')} />
                          <Error>{errors.mdr?.message}</Error>
                         </label>
-                    
                      <button type="submit">Enviar!</button>
                     </form>
             </LeftContainer>

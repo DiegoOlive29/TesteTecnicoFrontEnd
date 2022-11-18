@@ -1,21 +1,27 @@
 import {RightContainer  } from "./styles"
-const Right=() =>{
+import {ResponsePost} from "../../service/postAnticipation"
+import { ReactNode } from "react"
 
+interface ResponseDados{
+    dados:ResponsePost | undefined;
+}
+const Right=({dados}:ResponseDados) =>{
+    
+    console.log(dados)
     return (
-       
             
             <RightContainer>
                 
                     <h3>VOCÊ RECEBERÁ:
                     <hr />
                     </h3>
-                <p>Amanhã: <span>R$ 0,00</span></p>
+                <p>Amanhã: <span>R$: {dados === undefined  ? ("0"):(dados[1])}</span></p>
 
-                <p>Em 15 dias: <span>R$ 0,00</span></p>
+                <p>Em 15 dias: <span>R$: {dados === undefined  ? ("0"):(dados[15])}</span></p>
 
-                <p>Em 30 dias: <span>R$ 0,00</span></p>
+                <p>Em 30 dias: <span>R$: {dados === undefined  ? ("0"):(dados[30])}</span></p>
 
-                <p>Em 90 dias: <span>R$ 0,00</span></p>
+                <p>Em 90 dias: <span>R$: {dados === undefined  ? ("0"):(dados[90])}</span></p>
                 
             </RightContainer>
       

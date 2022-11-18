@@ -1,20 +1,24 @@
 import { api } from "../utils/urls";
 
+
 interface DataPostAnt{
     amount:number;
     installments: number;
     mdr: number
 }
-interface ResponsePost{
-    1:number;
+export interface ResponsePost{
+    1 :number;
     15:number;
     30:number;
     90:number
 }
 
+
 export async function postAnt(dataAnt:DataPostAnt): Promise<ResponsePost> {
 
-    const{amount,installments,mdr} = dataAnt;
+    let {amount,installments,mdr} = dataAnt;
+
+    amount = amount *100
     
     const {data} = await api.post('',{amount,installments,mdr})
 
