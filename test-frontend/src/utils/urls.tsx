@@ -1,12 +1,6 @@
+import axios from "axios";
 
-const nada=() =>{
-
-    return (
-       
-            
-            <p></p>
-          
-    )
-}
-
-export default nada
+export const api = axios.create({
+  baseURL: "https://frontend-challenge-7bu3nxh76a-uc.a.run.app",
+  timeout: 10000,
+});

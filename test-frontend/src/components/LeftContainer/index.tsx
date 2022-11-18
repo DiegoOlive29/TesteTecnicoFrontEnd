@@ -5,14 +5,14 @@ import { yupResolver } from '@hookform/resolvers/yup';
 
 const LeftCon=() =>{
     interface CreateConsult{
-        saleValue:string;
-    qtdParcel:string;
-    percentage:string;
+        amount      :string;
+        installments:string;
+        mdr         :string;
     }
     const formSchema  = yup.object().shape({
-        saleValue   :yup.string().required("Campo obrigatório.") ,
-        qtdParcel   :yup.string().required("Campo obrigatório.") ,
-        percentage  :yup.string().required("Campo obrigatório.") 
+        amount       :yup.string().required("Campo obrigatório."),
+        installments :yup.string().required("Campo obrigatório."),
+        mdr          :yup.string().required("Campo obrigatório.") 
     });
 
     const { register, handleSubmit,formState:{ errors }} = useForm<CreateConsult>({resolver:yupResolver(formSchema)});
@@ -28,18 +28,18 @@ const LeftCon=() =>{
                         <h2>Simule sua Antecipação</h2>
                         
                         <label htmlFor=""> <p>Informe o valor da venda <span>*</span> </p>
-                        <input type="text" placeholder="Numeros" {...register('saleValue')}/>
-                        <Error>{errors.saleValue?.message}</Error>
+                        <input type="text" placeholder="Numeros" {...register('amount')}/>
+                        <Error>{errors.amount?.message}</Error>
                         </label>
                         <label htmlFor=""> <p>Em quantas parcelas <span>*</span> </p>
-                        <input type="text" placeholder="Numeros"  {...register('qtdParcel')} />
+                        <input type="text" placeholder="Numeros"  {...register('installments')} />
                         <SmallerText>Maximo de 12 parcelas</SmallerText>
-                         <Error>{errors.qtdParcel?.message}</Error>
+                         <Error>{errors.installments?.message}</Error>
                         </label>
 
                         <label htmlFor=""> <p>Informe o percentual de MDR <span>*</span> </p>
-                        <input type="text" placeholder="Numeros" {...register('percentage')} />
-                         <Error>{errors.percentage?.message}</Error>
+                        <input type="text" placeholder="Numeros" {...register('mdr')} />
+                         <Error>{errors.mdr?.message}</Error>
                         </label>
                     
                      <button type="submit">Enviar!</button>
