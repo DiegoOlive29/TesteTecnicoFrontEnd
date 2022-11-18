@@ -55,6 +55,12 @@ input:hover{
 `
 export const SmallerText = styled.p`
 font-size           : 10px;
-color               : var(--greytextmin)
+color               : var(--greytextmin);
 
 `
+
+export const Error = styled.span`
+  
+  font-size         : 10px;
+  color             : var(--redError);
+`;
