@@ -1,6 +1,6 @@
 # Inicialização do projeto:
-Após o fazer o clone do projeto na sua máquina, basta iniciar a aplicação com o comando 
-yarn install ou npm install
+Após o fazer o clone do projeto na sua máquina, basta iniciar a aplicação com o comando :
+	yarn install ou npm install
 
 	yarn start ou npm start
 
