@@ -1,4 +1,4 @@
-import {LeftContainer , SmallerText, Error } from "./styles";
+import {LeftContainer , SmallerText, Error, ButtonSend } from "./styles";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -62,7 +62,7 @@ const LeftCon=({setDados,setLoad,setInternalProblem}:LeftProps) =>{
                         <input type="text" placeholder="Numeros" {...register('mdr')} />
                          <Error>{errors.mdr?.message}</Error>
                         </label>
-                     <button type="submit">Enviar!</button>
+                     <ButtonSend type="submit">Enviar !</ButtonSend>
                     </form>
                     
             </LeftContainer>
