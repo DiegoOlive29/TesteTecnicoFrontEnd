@@ -11,8 +11,10 @@ export const GlobalStyle = createGlobalStyle`
     --whiteback: rgba(245,247,250);
     --greytext: #626262;
     --greytextmin: #919191;
-    --redError: #ad0000
-
+    --redError: #ad0000;
+    --redErrorfundo: #fc3131d5;
+    --greenCalc: #31fc42d4;
+    --greenCalcBord: #19a425;
 
     }
     *{

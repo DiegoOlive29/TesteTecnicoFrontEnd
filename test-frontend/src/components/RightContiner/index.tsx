@@ -1,6 +1,5 @@
 import {RightContainer  } from "./styles"
 import {ResponsePost} from "../../service/postAnticipation"
-import { ReactNode } from "react"
 
 interface ResponseDados{
     dados:ResponsePost | undefined;
