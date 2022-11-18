@@ -21,6 +21,8 @@ export async function postAnt(dataAnt:DataPostAnt): Promise<ResponsePost> {
     amount = amount *100
     
     const {data} = await api.post('',{amount,installments,mdr})
+    
+
 
     console.log(data)
 

@@ -4,12 +4,18 @@ import * as yup from "yup";
 import { yupResolver } from '@hookform/resolvers/yup';
 import { postAnt } from "../../service/postAnticipation";
 
+
 interface LeftProps{
-    setDados:any ;
-        
+    setDados:Function ;
+    setLoad:Function;
+    setInternalProblem:Function;
+
     }
 
-const LeftCon=({setDados}:LeftProps) =>{
+
+
+const LeftCon=({setDados,setLoad,setInternalProblem}:LeftProps) =>{
+
     interface CreateConsult{
         amount:number;
         installments: number;
@@ -24,17 +30,22 @@ const LeftCon=({setDados}:LeftProps) =>{
     const { register, handleSubmit,formState:{ errors }} = useForm<CreateConsult>({resolver:yupResolver(formSchema)});
 
     const  handleSubmitPost = async (data:CreateConsult)=> {
-       
-        setDados(await postAnt(data))
+        setLoad(true);
+        setInternalProblem(false)
+        setDados(await postAnt(data).catch((err)=> {
+            setInternalProblem(true)
+        }))
+
+        setLoad(false)
         
     }
 
     return (
-       
+            
             <LeftContainer>
-                   
+                
                     <form onSubmit={handleSubmit(handleSubmitPost)}>
-
+                    
                         <h2>Simule sua Antecipação</h2>
                         
                         <label htmlFor=""> <p>Informe o valor da venda <span>*</span> </p>
@@ -53,9 +64,10 @@ const LeftCon=({setDados}:LeftProps) =>{
                         </label>
                      <button type="submit">Enviar!</button>
                     </form>
+                    
             </LeftContainer>
             
-            
+          
             )
         }
         
