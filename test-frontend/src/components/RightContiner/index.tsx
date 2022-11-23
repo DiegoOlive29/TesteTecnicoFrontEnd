@@ -14,13 +14,13 @@ const Right=({dados}:ResponseDados) =>{
                     <h3>VOCÊ RECEBERÁ:
                     <hr />
                     </h3>
-                <p>Amanhã: <span>R$: {dados === undefined  ? ("0"):(dados[1])}</span></p>
+                <p>Amanhã: <span>R$: {dados === undefined  ? ("0"):(dados[1]/100)}</span></p>
 
-                <p>Em 15 dias: <span>R$: {dados === undefined  ? ("0"):(dados[15])}</span></p>
+                <p>Em 15 dias: <span>R$: {dados === undefined  ? ("0"):(dados[15]/100)}</span></p>
 
-                <p>Em 30 dias: <span>R$: {dados === undefined  ? ("0"):(dados[30])}</span></p>
+                <p>Em 30 dias: <span>R$: {dados === undefined  ? ("0"):(dados[30]/100)}</span></p>
 
-                <p>Em 90 dias: <span>R$: {dados === undefined  ? ("0"):(dados[90])}</span></p>
+                <p>Em 90 dias: <span>R$: {dados === undefined  ? ("0"):(dados[90]/100)}</span></p>
                 
             </RightContainer>
       
