@@ -64,3 +64,12 @@ export const Error = styled.span`
   font-size         : 10px;
   color             : var(--redError);
 `;
+export const ButtonSend = styled.button`
+    padding         : 10px;
+    background-color: var(--whiteback);
+    border          : solid 1px var(--grey);
+    border-radius   : 5px;
+    :hover{
+    border          : solid 1px var(--blueMin);
+    
+}`
